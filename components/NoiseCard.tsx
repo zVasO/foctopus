@@ -1,6 +1,7 @@
 "use client"
 import {useState} from "react";
 import {Slider} from "@mui/material";
+import SoundPlayer from "@/components/SoundPlayer";
 
 interface NoiseCardProps {
     name: string
@@ -9,10 +10,12 @@ interface NoiseCardProps {
 
 const NoiseCard = ({name, svgName}: NoiseCardProps) => {
     const [isActive, setIsActive] = useState(false)
+    const [volume, setVolume] = useState(50)
 
     const toggleActive = () => {
         setIsActive(!isActive)
     }
+
 
     return (
         <div className={"flex justify-center"}>
@@ -35,9 +38,13 @@ const NoiseCard = ({name, svgName}: NoiseCardProps) => {
 						aria-label="Small"
 						valueLabelDisplay="auto"
 						color="secondary"
+						onChange={(event) => {
+                            setVolume(event.target?.value)
+                        }}
 					/>}
                 </div>
             </div>
+            <SoundPlayer soundPath={`sounds/${name}.mp3`} isActive={isActive} volume={volume}/>
         </div>
     )
 }
