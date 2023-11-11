@@ -16,7 +16,6 @@ const NoiseCard = ({name, svgName}: NoiseCardProps) => {
         setIsActive(!isActive)
     }
 
-
     return (
         <div className={"flex justify-center"}>
             <div
@@ -39,7 +38,14 @@ const NoiseCard = ({name, svgName}: NoiseCardProps) => {
 						valueLabelDisplay="auto"
 						color="secondary"
 						onChange={(event) => {
-                            setVolume(event.target?.value)
+                            const target = event.target as HTMLInputElement;
+                            const newVolume = parseFloat(target.value);
+
+                            if (!isNaN(newVolume)) {
+                                setVolume(newVolume);
+                            } else {
+                                console.error('Invalid volume value:', target.value);
+                            }
                         }}
 					/>}
                 </div>
