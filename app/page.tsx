@@ -28,7 +28,7 @@ export default function Home() {
                     <NoiseCard svgName={'jtbIL-book'} name={'book page'}/>
 
                     <NoiseCard svgName={'jtbIL-cloud-bolt'} name={'thunder'}/>
-                    <NoiseCard svgName={'jtbIL-flood'} name={'flood'}/>
+                    <NoiseCard svgName={'jtbIL-flood'} name={'wave'}/>
                     <NoiseCard svgName={'jtbIL-typewriter'} name={'keyboard'}/>
                 </CardContainer>
             </main>
