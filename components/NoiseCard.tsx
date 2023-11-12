@@ -19,15 +19,13 @@ const NoiseCard = ({name, svgName}: NoiseCardProps) => {
     return (
         <div className={"flex justify-center"}>
             <div
-                className={`flex items-center flex-col justify-center group rounded-lg border border-transparent mx-5 my-4 p-3 transition-colors w-32
-                hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30
-                ${isActive ? 'border-gray-300 dark:border-neutral-700' : ''}`}
+                className={`flex items-center flex-col justify-center group rounded-lg border border-transparent mx-5 my-4 p-3 transition-colors w-32`}
             >
                 <div className="hover:cursor-pointer flex items-center flex-col justify-center" onClick={toggleActive}>
                     <p className={`m-2 max-w-[30ch] text-sm opacity-50`}>
                         {name.toUpperCase()}
                     </p>
-                    <i className={`${svgName} jtbI-4x`}></i>
+                    <i className={`${svgName} jtbI-4x ${isActive ? 'opacity-100' : 'opacity-50'} hover:opacity-100 transition ease-in-out duration-300`}></i>
                 </div>
 
                 <div className={'w-full min-h-[2.25rem]'}>

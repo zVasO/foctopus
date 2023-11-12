@@ -17,12 +17,12 @@ const MusicCard = ({name}: NoiseCardProps) => {
     return (
         <div
             className={`h-56 w-56 flex flex-col justify-between group rounded-lg border border-transparent px-5 py-4 
-            transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30
-            ${isActive ? 'border-gray-300 dark:border-neutral-700' : ''}`}
+            transition-colors`}
             onClick={toggleActive}
         >
             <div style={{position: 'relative', width: '180px', height: '180px'}}>
                 <Image
+                    className={`${isActive ? 'opacity-100' : 'opacity-50'} hover:opacity-100 transition ease-in-out duration-300`}
                     src={`/images/${name}.png`}
                     fill={true}
                     alt="The lofi music logo"
