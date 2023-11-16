@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import SoundPlayer from "@/components/SoundPlayer";
 import {useState} from "react";

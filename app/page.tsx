@@ -1,5 +1,3 @@
-"use client"
-
 import React from "react";
 import MusicCard from "@/components/MusicCard";
 import CardContainer from "@/components/CardContainer";
@@ -9,6 +7,11 @@ import '../public/css/jtbI.css'
 import '../public/css/jtbIB.css'
 import {ThemeProvider} from "@mui/material";
 import theme from "@/app/theme";
+
+export const metadata = {
+    title: "Foctopus - homepage",
+    description: "Foctopus is a web application who provide noise and music for focus.",
+}
 
 export default function Home() {
     return (
