@@ -28,8 +28,10 @@ const PomodoroTimer = () => {
 
 
     return (
-        <div className={'flex justify-center mt-2.5'}>
-            <div className="border rounded-full h-12 w-56 flex justify-between items-center">
+        <div className={'flex justify-center mt-2.5 select-none'}>
+            <div
+                className={`border rounded-full h-12 w-56 flex justify-between items-center 
+                    ${isTimerRunning ? 'border-green-500 text-green-500' : 'border-red-500 text-red-500'}`}>
                 <div className="ml-3">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                          stroke="currentColor" className="w-6 h-6">
@@ -42,7 +44,7 @@ const PomodoroTimer = () => {
                     id="timerInput"
                     maxLength={5}
                     pattern="[0-9]*"
-                    className={"border-none outline-0 focus:border-none text-white bg-black text-center w-32 text-2xl"}
+                    className={"border-none outline-0 focus:border-none bg-black text-center w-32 text-2xl"}
                     autoComplete="off"
                     value={timer}
                     onChange={handleChange}
