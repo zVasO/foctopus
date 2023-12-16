@@ -3,9 +3,9 @@
 import React, {useEffect, useState} from "react";
 
 const PomodoroTimer = () => {
-    const timerWorkingValue = 5; //25 * 60
-    const timerSmallRestValue = 2; // 5 * 60
-    const timerBigRestValue = 10; // 25 * 60
+    const timerWorkingValue = 25 * 60;
+    const timerSmallRestValue = 5 * 60;
+    const timerBigRestValue = 25 * 60;
 
     const workCycle = "WORK"
     const restCycle = "REST"
@@ -27,8 +27,7 @@ const PomodoroTimer = () => {
                     if (prevSeconds === 0) {
                         clearInterval(intervalId!);
                         setIsTimerRunning(false);
-                        setNextCycle()
-                        prepareNewTimer()
+                        changeCycle()
                     }
                     return prevSeconds - 1;
                 });
@@ -48,16 +47,22 @@ const PomodoroTimer = () => {
         // todo Implement your format logic if needed
     };
 
-    const setNextCycle = () => {
-        setCurrentCycle(currentCycle === workCycle ? restCycle : workCycle);
-        setWorkCycleCount(currentCycle === workCycle ? workCycleCount + 1 : workCycleCount);
-    };
+    const changeCycle = () => {
+        const newCycle = currentCycle === workCycle ? restCycle : workCycle;
+        setCurrentCycle(newCycle);
+
+        const newWorkCycleCount = newCycle === workCycle ? workCycleCount + 1 : workCycleCount;
+        setWorkCycleCount(newWorkCycleCount)
+
+        prepareNewTimer(newCycle, newWorkCycleCount);
+    }
 
 
-    const prepareNewTimer = () => {
-        if (currentCycle === workCycle) {
+    const prepareNewTimer = (newCycle: string, newWorkCycleCount: number) => {
+        console.log(newCycle, newWorkCycleCount)
+        if (newCycle === workCycle) {
             setSeconds(timerWorkingValue)
-        } else if (currentCycle === restCycle && workCycleCount === requireBigRest) {
+        } else if (newCycle === restCycle && newWorkCycleCount === requireBigRest) {
             setSeconds(timerBigRestValue)
             resetWorkingCycleCount()
         } else {
@@ -116,7 +121,7 @@ const PomodoroTimer = () => {
                     autoComplete="off"
                     value={secondsToTime(seconds)}
                     onChange={handleChange}
-                    disabled={isTimerRunning}
+                    disabled={true}
                 />
                 <div className="mr-3 cursor-pointer" onClick={handleTimerPause}>
                     {isTimerRunning
