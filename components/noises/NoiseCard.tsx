@@ -2,13 +2,16 @@
 import {useState} from "react";
 import {Slider} from "@mui/material";
 import MusicPlayer from "@/components/MusicPlayer";
+import Image from "next/image";
 
 interface NoiseCardProps {
     name: string
+    soundPath: string
+    svgPath: string
     svgName?: string
 }
 
-const NoiseCard = ({name, svgName}: NoiseCardProps) => {
+const NoiseCard = ({name, svgPath, soundPath}: NoiseCardProps) => {
     const [isActive, setIsActive] = useState(false)
     const [volume, setVolume] = useState(50)
 
@@ -25,7 +28,15 @@ const NoiseCard = ({name, svgName}: NoiseCardProps) => {
                     <p className={`m-2 max-w-[30ch] text-sm opacity-50`}>
                         {name.toUpperCase()}
                     </p>
-                    <i className={`${svgName} jtbI-4x ${isActive ? 'opacity-100' : 'opacity-50'} hover:opacity-100 transition ease-in-out duration-300`}></i>
+                    <Image
+                        src={svgPath}
+                        width={75}
+                        height={75}
+                        alt={name}
+                        className={`${
+                            isActive ? "opacity-100" : "opacity-50"
+                        } hover:opacity-100 transition ease-in-out duration-300 text-blue-500 invert`}
+                    />
                 </div>
 
                 <div className={'w-full min-h-[2.25rem]'}>
@@ -48,7 +59,7 @@ const NoiseCard = ({name, svgName}: NoiseCardProps) => {
                     />}
                 </div>
             </div>
-            <MusicPlayer soundPath={`sounds/${name}.mp3`} isActive={isActive} volume={volume}/>
+            <MusicPlayer soundPath={soundPath} isActive={isActive} volume={volume}/>
         </div>
     )
 }

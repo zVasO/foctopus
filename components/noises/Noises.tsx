@@ -24,7 +24,12 @@ const Noises = () => {
         <div>
             <NoisesCardContainer>
                 {Array.isArray(noises) && noises.map((noise, index) => (
-                    <NoiseCard svgName={'jtbIL-cloud-hail-rain'} name={'rain'} key={index}/>
+                    <NoiseCard
+                        key={index}
+                        soundPath={noise.audio_file_path}
+                        svgPath={noise.icon_svg_file_path}
+                        name={noise.name}
+                    />
                 ))}
             </NoisesCardContainer>
         </div>
