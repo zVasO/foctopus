@@ -3,7 +3,6 @@
 import Image from "next/image";
 import MusicPlayer from "@/components/MusicPlayer";
 import {useState} from "react";
-import {useNoises} from "@/api/noises/noises";
 
 interface NoiseCardProps {
     name: string
@@ -12,11 +11,9 @@ interface NoiseCardProps {
 const SoundCard = ({name}: NoiseCardProps) => {
     const [isActive, setIsActive] = useState(false)
     const [volume, setVolume] = useState(50)
-    const {getAllNoises} = useNoises();
 
     const toggleActive = () => {
-        getAllNoises()
-        //setIsActive(!isActive)
+        setIsActive(!isActive)
     }
 
     return (
