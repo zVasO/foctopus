@@ -1,19 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import SoundPlayer from "@/components/SoundPlayer";
+import MusicPlayer from "@/components/MusicPlayer";
 import {useState} from "react";
+import {useNoises} from "@/api/noises/noises";
 
 interface NoiseCardProps {
     name: string
 }
 
-const MusicCard = ({name}: NoiseCardProps) => {
+const SoundCard = ({name}: NoiseCardProps) => {
     const [isActive, setIsActive] = useState(false)
     const [volume, setVolume] = useState(50)
+    const {getAllNoises} = useNoises();
 
     const toggleActive = () => {
-        setIsActive(!isActive)
+        getAllNoises()
+        //setIsActive(!isActive)
     }
 
     return (
@@ -36,9 +39,9 @@ const MusicCard = ({name}: NoiseCardProps) => {
             <p className={`mt-2 max-w-[30ch] text-sm opacity-50 text-center`}>
                 {name.toUpperCase()}
             </p>
-            <SoundPlayer soundPath={`musics/${name}.mp3`} isActive={isActive} volume={volume}/>
+            <MusicPlayer soundPath={`musics/${name}.mp3`} isActive={isActive} volume={volume}/>
         </div>
     )
 }
 
-export default MusicCard;
+export default SoundCard;

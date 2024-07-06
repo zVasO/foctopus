@@ -7,7 +7,7 @@ interface SoundPlayerProps {
     volume?: number;
 }
 
-const SoundPlayer = ({soundPath, isActive, volume}: SoundPlayerProps) => {
+const MusicPlayer = ({soundPath, isActive, volume}: SoundPlayerProps) => {
     const soundRef = useRef<Howl | null>(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -31,7 +31,6 @@ const SoundPlayer = ({soundPath, isActive, volume}: SoundPlayerProps) => {
         if (volume !== undefined) {
             const adjustedVolume = Math.max(0, Math.min(volume / 100, 1));
             sound.volume(adjustedVolume);
-            console.log('volume', adjustedVolume);
         }
 
         if (isActive && !isPlaying) {
@@ -50,4 +49,4 @@ const SoundPlayer = ({soundPath, isActive, volume}: SoundPlayerProps) => {
     return null;
 };
 
-export default SoundPlayer;
+export default MusicPlayer;

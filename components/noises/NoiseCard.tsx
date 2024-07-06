@@ -1,7 +1,7 @@
 "use client"
 import {useState} from "react";
 import {Slider} from "@mui/material";
-import SoundPlayer from "@/components/SoundPlayer";
+import MusicPlayer from "@/components/MusicPlayer";
 
 interface NoiseCardProps {
     name: string
@@ -30,12 +30,12 @@ const NoiseCard = ({name, svgName}: NoiseCardProps) => {
 
                 <div className={'w-full min-h-[2.25rem]'}>
                     {isActive && <Slider
-						size="small"
-						defaultValue={50}
-						aria-label="Small"
-						valueLabelDisplay="auto"
-						color="secondary"
-						onChange={(event) => {
+                        size="small"
+                        defaultValue={50}
+                        aria-label="Small"
+                        valueLabelDisplay="auto"
+                        color="secondary"
+                        onChange={(event) => {
                             const target = event.target as HTMLInputElement;
                             const newVolume = parseFloat(target.value);
 
@@ -45,10 +45,10 @@ const NoiseCard = ({name, svgName}: NoiseCardProps) => {
                                 console.error('Invalid volume value:', target.value);
                             }
                         }}
-					/>}
+                    />}
                 </div>
             </div>
-            <SoundPlayer soundPath={`sounds/${name}.mp3`} isActive={isActive} volume={volume}/>
+            <MusicPlayer soundPath={`sounds/${name}.mp3`} isActive={isActive} volume={volume}/>
         </div>
     )
 }
