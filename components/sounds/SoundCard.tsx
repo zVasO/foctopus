@@ -18,14 +18,14 @@ const SoundCard = ({name}: NoiseCardProps) => {
 
     return (
         <div
-            className={`h-56 w-56 flex flex-col justify-between group rounded-lg border border-transparent px-5 py-4 
+            className={`h-56 w-56 flex flex-col justify-between items-center group rounded-lg border border-transparent px-5 py-4 
             transition-colors`}
             onClick={toggleActive}
         >
-            <div style={{position: 'relative', width: '180px', height: '180px'}}>
+            <div className={"relative w-[140px] h-[140px]"}>
                 <Image
-                    className={`${isActive ? 'opacity-100' : 'opacity-50'} hover:opacity-100 transition ease-in-out duration-300`}
-                    src={`/images/${name}.png`}
+                    className={`${isActive ? 'opacity-100' : 'opacity-50'} hover:opacity-100 transition ease-in-out duration-300 invert`}
+                    src={`/images/${name}.svg`}
                     fill={true}
                     alt="The lofi music logo"
                     style={{

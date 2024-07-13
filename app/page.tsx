@@ -18,9 +18,9 @@ export default function Home() {
         <ThemeProvider theme={theme}>
             <PomodoroTimer/>
             <main className="flex min-h-screen flex-col items-center p-24">
-                <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex mb-12">
+                <div className="z-10 max-w-5xl w-full items-center font-mono text-sm lg:flex mb-12">
                     <SoundCard name={"lofi"}/>
-                    {/*<MusicCard name={"piano"}/>*/}
+                    <SoundCard name={"piano"}/>
                     {/*<MusicCard name={"handpan"}/>*/}
                     {/*<MusicCard name={"jazz"}/>*/}
 
