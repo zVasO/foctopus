@@ -1,5 +1,4 @@
 "use client";
-
 import {useNoises} from "@/api/noises/noises";
 import {useEffect, useState} from "react";
 import {noiseType} from "@/types/api/noises/noises";
